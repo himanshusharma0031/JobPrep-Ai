@@ -4,13 +4,13 @@ const tokenBlacklistModal = require('../Model/blacklist');
 const authUser =async(req,res,next)=>{
     const token = req.cookies.token;
     if(!token){
-        res.status(401).json({
+       return res.status(401).json({
             message:'please login first',
         })
     }
     const istokenBlacklisted = await tokenBlacklistModal.findOne({token})
     if(istokenBlacklisted){
-        res.status(401).json({
+       return res.status(401).json({
             message:'Unauthorized user',
         })
     }
@@ -20,7 +20,7 @@ const authUser =async(req,res,next)=>{
     next();
 
     }catch(err){
-        res.status(400).json({
+       return res.status(401).json({
             message:"invalid user"
         })
     }
