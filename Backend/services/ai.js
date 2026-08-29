@@ -168,20 +168,26 @@ Do not add any other fields.
     return report;
 };
 
+
 const generatePdfFromHtml = async (htmlContent) => {
     const browser = await puppeteer.launch({
         headless: true,
         args: [
             "--no-sandbox",
-            "--disable-setuid-sandbox"
+            "--disable-setuid-sandbox",
+            "--disable-dev-shm-usage"
         ]
     });
 
     try {
         const page = await browser.newPage();
 
+        // PDF generation ke liye 30 sec navigation timeout hata do
+        page.setDefaultNavigationTimeout(0);
+
         await page.setContent(htmlContent, {
-            waitUntil: "networkidle2"
+            waitUntil: "domcontentloaded",
+            timeout: 0
         });
 
         const pdfBuffer = await page.pdf({
@@ -194,6 +200,33 @@ const generatePdfFromHtml = async (htmlContent) => {
         await browser.close();
     }
 };
+
+// const generatePdfFromHtml = async (htmlContent) => {
+//     const browser = await puppeteer.launch({
+//         headless: true,
+//         args: [
+//             "--no-sandbox",
+//             "--disable-setuid-sandbox"
+//         ]
+//     });
+
+//     try {
+//         const page = await browser.newPage();
+
+//         await page.setContent(htmlContent, {
+//             waitUntil: "networkidle2"
+//         });
+
+//         const pdfBuffer = await page.pdf({
+//             format: "A4",
+//             printBackground: true
+//         });
+
+//         return pdfBuffer;
+//     } finally {
+//         await browser.close();
+//     }
+// };
 
 // const generatePdfFromHtml = async(htmlContent)=>{
 //     const browser = await puppeteer.launch()
