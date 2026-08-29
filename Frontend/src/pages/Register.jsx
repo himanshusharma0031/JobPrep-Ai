@@ -12,8 +12,10 @@ const Register =()=>{
 
     const registerUser =async(e)=>{
       e.preventDefault();
-      await handleRegister({username,email,password});
+      const res = await handleRegister({username,email,password});
       navigate("/")
+     // console.log(res.message)
+      alert(res.message)
     }
     if(loading){
       <h1>loading....</h1>

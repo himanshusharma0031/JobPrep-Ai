@@ -13,6 +13,7 @@ export const useAuth = () => {
 
             if (data?.user) {
                 setUser(data.user);
+                return data
             }
         } catch (err) {
             console.log("Login error:", err);
@@ -28,7 +29,8 @@ export const useAuth = () => {
             const data = await register({ username, email, password });
 
             if (data?.user) {
-                setUser(data.user);
+                setUser(data.user)
+                return data
             }
         } catch (err) {
             console.log("Register error:", err);

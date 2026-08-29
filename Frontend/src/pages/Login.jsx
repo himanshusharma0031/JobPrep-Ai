@@ -12,8 +12,10 @@ const Login =()=>{
 
   const handlelogin =async(e)=>{
       e.preventDefault();
-     await handleLogin({email,password})
+     const res = await handleLogin({email,password})
+     console.log(res)
      navigate("/")
+     alert(res.message)
   } 
   if(loading){
     return(

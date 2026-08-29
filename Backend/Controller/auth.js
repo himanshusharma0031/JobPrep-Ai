@@ -83,6 +83,7 @@ const loginUser = async(req,res)=>{
 });
 
     res.json({
+      message: "Login Successful",
       user,
     });
   } catch (err) {
