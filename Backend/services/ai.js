@@ -168,20 +168,47 @@ Do not add any other fields.
     return report;
 };
 
+const generatePdfFromHtml = async (htmlContent) => {
+    const browser = await puppeteer.launch({
+        headless: true,
+        executablePath: "/opt/render/.cache/puppeteer/chrome/linux-152.0.7977.54/chrome-linux64/chrome",
+        args: [
+            "--no-sandbox",
+            "--disable-setuid-sandbox"
+        ]
+    });
 
-const generatePdfFromHtml = async(htmlContent)=>{
-    const browser = await puppeteer.launch()
-    const page = await browser.newPage()
-    await page.setContent(htmlContent,{
-  waitUntil: 'networkidle2'
-})
+    try {
+        const page = await browser.newPage();
 
-  const pdfBuffer = await page.pdf({format :"A4"})
+        await page.setContent(htmlContent, {
+            waitUntil: "networkidle2"
+        });
 
-  await browser.close()
+        const pdfBuffer = await page.pdf({
+            format: "A4",
+            printBackground: true
+        });
 
-  return pdfBuffer
-}
+        return pdfBuffer;
+    } finally {
+        await browser.close();
+    }
+};
+
+// const generatePdfFromHtml = async(htmlContent)=>{
+//     const browser = await puppeteer.launch()
+//     const page = await browser.newPage()
+//     await page.setContent(htmlContent,{
+//   waitUntil: 'networkidle2'
+// })
+
+//   const pdfBuffer = await page.pdf({format :"A4"})
+
+//   await browser.close()
+
+//   return pdfBuffer
+// }
 
 const generateResumePdf =async({resume,selfDescription,jobDescription})=>{
    const resumePdfSchema = z.object({
