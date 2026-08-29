@@ -1,0 +1,122 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: #f5f7fb;
+}
+
+/* Main container */
+.register-container {
+  width: 100%;
+  max-width: 420px;
+  margin: 60px auto;
+  padding: 40px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Heading */
+.register-container h2 {
+  margin: 0 0 30px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+/* Form */
+.register-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels */
+.register-container label {
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* Inputs */
+.register-container input {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  font-size: 15px;
+  color: #111827;
+  background: #fff;
+  transition: all 0.2s ease;
+}
+
+/* Input focus */
+.register-container input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+/* Placeholder */
+.register-container input::placeholder {
+  color: #9ca3af;
+}
+
+/* Register button */
+.register-container button {
+  width: 100%;
+  margin-top: 5px;
+  padding: 13px;
+  border: none;
+  border-radius: 8px;
+  background: #6366f1;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.register-container button:hover {
+  background: #4f46e5;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(99, 102, 241, 0.25);
+}
+
+.register-container button:active {
+  transform: translateY(0);
+}
+
+/* Login link */
+.register-container > a {
+  display: block;
+  text-align: center;
+  margin-top: 5px;
+  color: #6366f1;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.register-container > a:hover {
+  color: #4338ca;
+  text-decoration: underline;
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+  .register-container {
+    width: calc(100% - 30px);
+    margin: 40px auto;
+    padding: 30px 22px;
+  }
+
+  .register-container h2 {
+    font-size: 26px;
+  }
+}
