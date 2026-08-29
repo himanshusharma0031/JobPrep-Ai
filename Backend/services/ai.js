@@ -171,7 +171,6 @@ Do not add any other fields.
 const generatePdfFromHtml = async (htmlContent) => {
     const browser = await puppeteer.launch({
         headless: true,
-        executablePath: "/opt/render/.cache/puppeteer/chrome/linux-152.0.7977.54/chrome-linux64/chrome",
         args: [
             "--no-sandbox",
             "--disable-setuid-sandbox"
