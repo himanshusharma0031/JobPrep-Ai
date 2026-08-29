@@ -2,7 +2,7 @@ import axios from 'axios';
 import { data } from 'react-router-dom';
 
 const api = axios.create({
-    baseURL : "http://localhost:8000",
+    baseURL : "https://jobprep-ai-o1d9.onrender.com",
     withCredentials : true
 })
 export const register = async({username,email,password}) =>{
