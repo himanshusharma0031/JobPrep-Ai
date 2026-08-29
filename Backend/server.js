@@ -10,7 +10,7 @@ const interviewRouter = require('./Routes/interview.js');
 
 const app = express()
 app.use(cors({
-    origin:['http://localhost:5173','https://jobprep-ai-o1d9.onrender.com'],
+    origin:['http://localhost:5173','https://job-prep-ai-v4b6.vercel.app'],
     credentials:true
 }));
 app.use(express.json());
