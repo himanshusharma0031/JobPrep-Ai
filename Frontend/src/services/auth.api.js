@@ -13,8 +13,9 @@ export const register = async({username,email,password}) =>{
     }catch(err){
           console.error(
             "Register error:",
-            err.response?.data || err.message
-        );
+            err.response.data
+        )
+        return err.response.data
         }  
     }
 
@@ -23,12 +24,14 @@ export const login =async({email,password})=>{
       const response = await api.post("/api/auth/login",{
         email,password
     })
+    console.log(response.data)
    return response.data;
     }catch(err){
        console.error(
             "login error:",
             err.response.data
         );
+        return err.response.data
     }
     
 }

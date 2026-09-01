@@ -6,9 +6,12 @@ import Protected from "./components/protected";
 import Home from "./interview/pages/home";
 import Interview from "./interview/pages/interview";
 import { InterviewProvider } from "./interview/interview.context";
+import {Toaster}  from "react-hot-toast";
 
 function App() {
   return (
+    <>
+    <Toaster/>
     <AuthProvider>
     <InterviewProvider>
     <BrowserRouter>
@@ -26,6 +29,7 @@ function App() {
     </BrowserRouter>
     </InterviewProvider>
     </AuthProvider>
+    </>
   );
 }
 export default App;

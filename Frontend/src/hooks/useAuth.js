@@ -13,8 +13,9 @@ export const useAuth = () => {
 
             if (data?.user) {
                 setUser(data.user);
-                return data
+               // return data
             }
+            return data
         } catch (err) {
             console.log("Login error:", err);
         } finally {
@@ -30,8 +31,9 @@ export const useAuth = () => {
 
             if (data?.user) {
                 setUser(data.user)
-                return data
+               // return data
             }
+            return data
         } catch (err) {
             console.log("Register error:", err);
         } finally {

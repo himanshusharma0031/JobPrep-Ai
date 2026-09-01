@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {useNavigate,Link} from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
+import toast from 'react-hot-toast'
 import "../style/Login.css"
 
 const Login =()=>{
@@ -14,12 +15,18 @@ const Login =()=>{
       e.preventDefault();
      const res = await handleLogin({email,password})
      console.log(res)
-     navigate("/")
-     alert(res.message)
+      if (res.message == "Login Successful") {
+          toast.success(res.message);
+          navigate("/");
+        } else {
+          toast.error(res.message);
+        }
   } 
-  if(loading){
-    return(
-      <h1>loading....</h1>
+ if(loading){
+    return (
+      <div className="loader-container">
+      <div className="loader"></div>
+    </div>
     )
   }
     return(

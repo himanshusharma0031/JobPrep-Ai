@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link,useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import "../style/Register.css"
+import toast from 'react-hot-toast'
 const Register =()=>{
     const [username,setUsername] = useState("");
     const [email,setEmail] = useState("");
@@ -13,13 +14,20 @@ const Register =()=>{
     const registerUser =async(e)=>{
       e.preventDefault();
       const res = await handleRegister({username,email,password});
-      navigate("/")
-     // console.log(res.message)
-      alert(res.message)
+      if (res.message == "Registration Successful") {
+          toast.success(res.message);
+          navigate("/");
+        } else {
+          toast.error(res.message);
+        }
     }
-    if(loading){
-      <h1>loading....</h1>
-    }
+     if(loading){
+    return (
+      <div className="loader-container">
+      <div className="loader"></div>
+    </div>
+    )
+  }
     return(
         <div className="register-container">
 

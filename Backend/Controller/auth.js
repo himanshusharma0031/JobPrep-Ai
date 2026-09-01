@@ -82,7 +82,7 @@ const loginUser = async(req,res)=>{
   sameSite: "none",
 });
 
-    res.json({
+    res.status(200).json({
       message: "Login Successful",
       user,
     });
